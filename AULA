@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Animais</title>
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+          margin: 20px;
+          max-width: 600px;
+      }
+      h1 {
+          color: #333;
+      }
+      select {
+          width: 100%;
+          padding: 10px;
+          margin: 15px 0;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+      }
+      ul {
+          list-style: none;
+          padding: 0;
+      }
+      li {
+          background: #f9f9f9;
+          padding: 10px;
+          margin: 5px 0;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Lista de Animais</h1>
+    <label for="animalType">Escolha um tipo de animal:</label>
+    <select id="animalType">
+      <option value="">Escolha um tipo abaixo</option>
+      <option value="caes">Cães</option>
+      <option value="gatos">Gatos</option>
+    </select>
+    <ul id="animalList"></ul>
+    <script>
+
+      const animalData = {
+          "caes": [
+              "Bruce Wayne - Pug",
+              "Firmino Joaquino - Labrador",
+              "zoe - Pinscher"
+          ],
+          "gatos": [
+              "Guilhermina Madalena - Persa",
+              "Carlos Eduarda - Siamês",
+              "Chica - Angorá"
+          ]
+      };
+
+
+      document.addEventListener("DOMContentLoaded", () => {
+          const animalType = document.getElementById("animalType");
+          const animalList = document.getElementById("animalList");
+
+          animalType.addEventListener("change", () => {
+              const selectedType = animalType.value;
+              animalList.innerHTML = "";
+              if (selectedType && animalData[selectedType]) {
+                  const animals = animalData[selectedType];
+                  animals.forEach(animal => {
+                      const li = document.createElement("li");
+                      li.textContent = animal;
+                      animalList.appendChild(li);
+                  });
+              } else {
+                  const li = document.createElement("li");
+                  li.textContent = "Nenhum animal encontrado.";
+                  animalList.appendChild(li);
+              }
+          });
+      });
+    </script>
+  </body>
+</html>
