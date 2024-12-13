@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de API</title>
+    <style>
+        body {
+            background-color:#ddd;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            max-width: 600px;
+            
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px 0;
+            background-color: #3030c3;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #1eb300;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>API</h1>  
+    <button id="olaServidor">ola_servidor</button>
+    <button id="queHoras">que_horas_sao_por_favor</button>
+    <div class="output" id="output">Aguardando interação...</div>
+
+    <script>
+       
+        document.getElementById("olaServidor").addEventListener("click", () => {
+            const response = {
+                message: "Oi coleguinhas. tudo tranquilo com vocês?"
+            };
+            document.getElementById("output").textContent = JSON.stringify(response, null, 2);
+        });
+
+        
+        document.getElementById("queHoras").addEventListener("click", () => {
+            const now = new Date();
+            const response = {
+                horaAtual: now.toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })
+            };
+            document.getElementById("output").textContent = JSON.stringify(response, null, 2);
+        });
+    </script>
+</body>
+</html>
